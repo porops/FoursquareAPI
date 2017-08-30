@@ -1,4 +1,4 @@
-package com.korvac.liquidpay.testvenue;
+package com.korvac.liquidpay.testvenue.api;
 
 import com.korvac.liquidpay.testvenue.model.FoursquareResponse;
 
@@ -15,8 +15,9 @@ import rx.Observable;
  * Created by aldi on 8/29/2017.
  */
 
-public interface API {
+public interface Foursquare {
 
-    @GET("v2/venues/explore?radius=100")
-    Observable<FoursquareResponse> getVenues(@Query("ll") String latlng, @Query("oauth_token") String token);
+    @GET("v2/venues/explore?")
+    Call<FoursquareResponse> getVenues(@Query("ll") String latlng, @Query("oauth_token") String token,
+                                       @Query("m") String versioningM, @Query("v") String versioningV);
 }
